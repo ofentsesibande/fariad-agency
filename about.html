@@ -1,0 +1,300 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Fariad Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #111;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }nav {
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      padding: 1rem 2rem;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 800px;
+      margin: auto;
+      z-index: 1000;
+      border: 1px solid #ddd;
+    }
+
+    nav a {
+    position: relative;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0;
+    background-color: #CBA135;
+    transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+    width: 100%;
+    }
+
+
+    nav a:last-child {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    h2{
+        text-align: center;
+    }
+
+    .main-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #fff;
+    }
+
+    .main-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+    }
+
+    .main-header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    }
+
+    .header-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #CBA135;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .section p {
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      background-color: #f9f9f9;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card img {
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      color: #CBA135;
+      margin-bottom: 0.5rem;
+    }
+    .values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .value {
+      flex: 1;
+      min-width: 250px;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+    .faq {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq h2 {
+      color: #CBA135;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item h3 {
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .faq-item p {
+      display: none;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f5f5f5;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<nav style="position: sticky; top: 0; background: #ffffff; padding: 1rem 2rem; display: flex; justify-content: center; gap: 2rem; max-width: 900px; margin: auto; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); z-index: 1000; border: 1px solid #e0e0e0;">
+  <a href="index.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Home</a>
+  <a href="about.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">About</a>
+  <a href="index.html#services" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Services</a>
+  <a href="index.html#process" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Process</a>
+  <a href="contact.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Contact</a>
+  <a href="quotation.html" style="background-color: #CBA135; color: #fff; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold;">Get a Quote</a>
+</nav>
+
+<header class="main-header">
+  <h1>About Fariad Agency</h1>
+  <p>Fariad Agency is a creative digital agency that helps small brands grow through strategic marketing, web design, and social media management. It focuses on crafting scroll-stopping content and impactful digital experiences that drive business growth.
+</p>
+</header>
+
+
+  <section class="section" data-aos="fade-up">
+    <h2 >Our Mission</h2>
+    <p>
+      At Fariad, we empower small businesses and startups with bold, strategy-driven digital experiences.
+      Through creativity, technology and close collaboration, we aim to elevate your brand in the digital landscape.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2>What We Offer</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1008/1008000.png" alt="Design" />
+        <h3>Design</h3>
+        <p>Crafting user-centered, visually compelling interfaces that captivate and convert.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721269.png" alt="Development" />
+        <h3>Development</h3>
+        <p>From landing pages to full websites, we build fast, secure, and scalable solutions.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Marketing" />
+        <h3>Marketing</h3>
+        <p>SEO, social media, and advertising campaigns that reach the right audience at the right time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2>Our Values</h2>
+    <div class="values">
+      <div class="value">
+        <h3>Creativity</h3>
+        <p>We believe in the power of original ideas to solve modern problems.</p>
+      </div>
+      <div class="value">
+        <h3>Collaboration</h3>
+        <p>We work closely with clients to build trust and foster innovation together.</p>
+      </div>
+      <div class="value">
+        <h3>Quality</h3>
+        <p>We strive to deliver excellent results through precision and consistency.</p>
+      </div>
+    </div>
+  </section>
+  <section class="faq" data-aos="fade-up">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3 onclick="toggleFaq(this)">How long does it take to build a website?</h3>
+      <p>Most websites take between 1–3 weeks to complete, depending on project size, complexity, and content readiness. We maintain a clear timeline with milestones to ensure you're always in the loop.</p>
+    </div>
+    <div class="faq-item">
+      <h3 onclick="toggleFaq(this)">What’s included in your social media management services?</h3>
+      <p>Our service includes strategy planning, content creation, post scheduling, performance tracking, and engagement management — all customized to your brand voice and goals.</p>
+    </div>
+    <div class="faq-item">
+      <h3 onclick="toggleFaq(this)">Do I need to provide the content for my website?</h3>
+      <p>We can work with content you provide, or craft it from scratch with our copywriting and creative team. This includes text, images, icons, and brand-consistent tone and voice..</p>
+    </div>
+    <div class="faq-item">
+      <h3 onclick="toggleFaq(this)">Do you provide support after launch?</h3>
+      <p>After launch, we provide post-launch support, which includes fixing bugs, adding updates, and optional monthly plans for ongoing maintenance, analytics reports, and SEO improvements.</p>
+    </div>
+    <div class="faq-item">
+      <h3 onclick="toggleFaq(this)">Can you help with branding or a new logo?</h3>
+      <p>>Absolutely! We offer full branding packages which include logo design, color palettes, typography, and brand guidelines to help your business look professional and consistent everywhere.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Fariad Agency. All rights reserved. | <a href="index.html">Home</a>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleFaq(el) {
+      const p = el.nextElementSibling;
+      p.style.display = p.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

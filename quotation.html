@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get a Quote - Fariad Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #111;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }nav {
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      padding: 1rem 2rem;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 800px;
+      margin: auto;
+      z-index: 1000;
+      border: 1px solid #ddd;
+    }
+
+    nav a {
+    position: relative;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0;
+    background-color: #CBA135;
+    transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+    width: 100%;
+    }
+
+
+    nav a:last-child {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    .quote-header {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .quote-header h1 {
+      font-size: 2.5rem;
+      color: #CBA135;
+    }
+
+    .quote-header p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .quote-form-container {
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      padding: 0.9rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #CBA135;
+      outline: none;
+      box-shadow: 0 0 10px rgba(203, 161, 53, 0.4);
+    }
+
+    input:hover, textarea:hover, select:hover {
+      background-color: #f9f9f9;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      padding: 1rem;
+      background-color: #CBA135;
+      color: white;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #b8902f;
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 4rem;
+      border-top: 1px solid #eee;
+    }
+
+    footer a {
+      color: #CBA135;
+      text-decoration: none;
+    }
+
+    /* Confirmation Animation Styling */
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .thank-you.active {
+      display: block;
+    }
+
+    .thank-you h2 {
+      color: #CBA135;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .thank-you p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+ <nav style="position: sticky; top: 0; background: #ffffff; padding: 1rem 2rem; display: flex; justify-content: center; gap: 2rem; max-width: 900px; margin: auto; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); z-index: 1000; border: 1px solid #e0e0e0;">
+  <a href="index.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Home</a>
+  <a href="about.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">About</a>
+  <a href="index.html#services" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Services</a>
+  <a href="index.html#process" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Process</a>
+  <a href="contact.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Contact</a>
+  <a href="quotation.html" style="background-color: #CBA135; color: #fff; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold;">Get a Quote</a>
+</nav>
+
+  <section class="quote-header" data-aos="fade-down">
+    <h1>Get a Custom Quote</h1>
+    <p>Let’s bring your vision to life — tell us about your project.</p>
+  </section>
+
+  <section class="quote-form-container" data-aos="fade-up">
+    <form name="quote" method="POST" data-netlify="true" onsubmit="showThankYou(event)">
+      <input type="hidden" name="form-name" value="quote" />
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="company">Company Name</label>
+      <input type="text" id="company" name="company" />
+
+      <label for="budget">Estimated Budget</label>
+      <select name="budget" id="budget">
+        <option value="less than R1,000">Less than R1,500</option>
+        <option value="R1,000 - R5,000">R1,500 - R3,000</option>
+        <option value="R5,000 - R10,000">R3,000 - R6,000</option>
+        <option value="More than R10,000">More than R6,000</option>
+      </select>
+
+      <label for="goals">Project Goals</label>
+      <textarea id="goals" name="goals" placeholder="Tell us about your goals and needs..."></textarea>
+
+      <label for="message">Additional Message</label>
+      <textarea id="message" name="message"></textarea>
+
+      <button type="submit">Submit Quote Request</button>
+    </form>
+  </section>
+
+  <!-- Confirmation Animation -->
+  <section class="thank-you" id="thankYouMessage">
+    <h2>🎉 Thank you!</h2>
+    <p>We've received your request. We'll be in touch very soon.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Fariad Agency. All rights reserved. | <a href="index.html">Home</a>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Optional client-side confirmation (for smooth user feedback)
+    function showThankYou(event) {
+      event.preventDefault();
+      document.querySelector("form").style.display = "none";
+      document.getElementById("thankYouMessage").classList.add("active");
+
+      // Optional: submit to Netlify manually if JS is enabled
+      const form = event.target;
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).catch(() => {});
+    }
+  </script>
+</body>
+</html>
+<!-- This code creates a simple quote request form for a web agency, styled with CSS and animated with AOS. It includes a navigation bar, a header section, a form for user input, and a thank you message that appears after submission. The form is designed to collect user details and project requirements, and it uses Netlify for form handling. -->

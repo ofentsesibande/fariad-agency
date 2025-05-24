@@ -1,0 +1,212 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Fariad Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #111;
+    }
+
+   nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }nav {
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      padding: 1rem 2rem;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 800px;
+      margin: auto;
+      z-index: 1000;
+      border: 1px solid #ddd;
+    }
+
+    nav a {
+    position: relative;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0;
+    background-color: #CBA135;
+    transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+    width: 100%;
+    }
+
+
+    nav a:last-child {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #CBA135;
+    }
+
+    .contact-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      background-color: #fff;
+    }
+
+    .contact-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #CBA135;
+      box-shadow: 0 0 5px #CBA13588;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background: #CBA135;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #b38e30;
+    }
+
+    .success-message {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .error-message {
+      text-align: center;
+      color: red;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+ <nav style="position: sticky; top: 0; background: #ffffff; padding: 1rem 2rem; display: flex; justify-content: center; gap: 2rem; max-width: 900px; margin: auto; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); z-index: 1000; border: 1px solid #e0e0e0;">
+  <a href="index.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Home</a>
+  <a href="about.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">About</a>
+  <a href="index.html#services" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Services</a>
+  <a href="index.html#process" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Process</a>
+  <a href="contact.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Contact</a>
+  <a href="quotation.html" style="background-color: #CBA135; color: #fff; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold;">Get a Quote</a>
+</nav>
+
+  <header data-aos="fade-down">
+    <h1>Contact Fariad Agency</h1>
+    <p>Have a project in mind? We'd love to hear from you.</p>
+  </header>
+
+  <section class="contact-container" data-aos="fade-up">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="subject" placeholder="Subject" />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <div class="success-message" id="successMsg">Message sent successfully!</div>
+      <div class="error-message" id="errorMsg">Something went wrong. Please try again.</div>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Fariad Agency | All rights reserved. | <a href="index.html">Home</a>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("successMsg");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch("/", {
+        method: "POST",
+        body: data,
+      })
+        .then(() => {
+          successMsg.style.display = "block";
+          errorMsg.style.display = "none";
+          form.reset();
+        })
+        .catch(() => {
+          errorMsg.style.display = "block";
+          successMsg.style.display = "none";
+        });
+    });
+  </script>
+</body>
+</html>
