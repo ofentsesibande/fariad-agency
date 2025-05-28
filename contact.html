@@ -16,17 +16,7 @@
       color: #111;
     }
 
-   nav {
-      position: sticky;
-      top: 0;
-      background: #fff;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #ccc;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      z-index: 1000;
-    }nav {
+  nav {
       position: sticky;
       top: 0;
       background: var(--nav-bg);
@@ -35,42 +25,48 @@
       display: flex;
       justify-content: center;
       gap: 2rem;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       z-index: 1000;
-      border: 1px solid #ddd;
+      border: 1px solid #e0e0e0;
     }
 
     nav a {
-    position: relative;
-    text-decoration: none;
-    color: #111;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
+      position: relative;
+      text-decoration: none;
+      color: #1A1A1A;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
 
     nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    height: 2px;
-    width: 0;
-    background-color: #CBA135;
-    transition: width 0.3s ease;
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
     }
 
     nav a:hover::after {
-    width: 100%;
+      width: 100%;
     }
-
 
     nav a:last-child {
-        background-color: var(--primary-color);
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
     }
+
+    nav a:last-child::after {
+      display: none;
+    }
+
 
     header {
       text-align: center;
@@ -151,14 +147,14 @@
   </style>
 </head>
 <body>
- <nav style="position: sticky; top: 0; background: #ffffff; padding: 1rem 2rem; display: flex; justify-content: center; gap: 2rem; max-width: 900px; margin: auto; border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); z-index: 1000; border: 1px solid #e0e0e0;">
-  <a href="index.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Home</a>
-  <a href="about.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">About</a>
-  <a href="index.html#services" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Services</a>
-  <a href="index.html#process" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Process</a>
-  <a href="contact.html" style="font-weight: bold; font-size: 1rem; color: #1A1A1A; text-decoration: none;">Contact</a>
-  <a href="quotation.html" style="background-color: #CBA135; color: #fff; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold;">Get a Quote</a>
-</nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="contact.html">Contact</a>
+    <a href="quotation.html">Get a Quote</a>
+  </nav>
 
   <header data-aos="fade-down">
     <h1>Contact Fariad Agency</h1>
@@ -190,6 +186,11 @@
     const successMsg = document.getElementById("successMsg");
     const errorMsg = document.getElementById("errorMsg");
 
+    function toggleFaq(element) {
+      const p = element.nextElementSibling;
+      p.style.display = p.style.display === "block" ? "none" : "block";
+    }
+    
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       const data = new FormData(form);
