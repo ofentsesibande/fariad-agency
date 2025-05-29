@@ -234,6 +234,109 @@
       color: var(--primary-color);
       text-decoration: none;
     }
+
+    @media (max-width: 1024px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  .package {
+    max-width: 100%;
+  }
+
+  .step {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+
+  header {
+    padding: 4rem 1rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .packages, .process {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .package, .step {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .faq h2 {
+    font-size: 1.75rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1rem;
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
+  }
+
+  section#section h2 {
+    font-size: 2rem;
+  }
+
+  .about-icons,
+  .stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .about-icons > div, .stats > div {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  .step img {
+    width: 70px;
+  }
+
+  .package button {
+    width: 100%;
+  }
+
+  blockquote {
+    font-size: 0.95rem;
+    padding-left: 1rem;
+  }
+}
+
   </style>
 </head>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
