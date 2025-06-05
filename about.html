@@ -1,4 +1,3 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +6,77 @@
   <title>About Us | Fariad Agency</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
+    :root {
+      --primary-color: #CBA135;
+      --background-color: #ffffff;
+      --text-color: #0A0A0A;
+      --card-bg: #f9f9f9;
+      --nav-bg: #ffffff;
+      --footer-bg: #f1f1f1;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #111;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
+
+    /* Mobile-First Navigation */
     nav {
       position: sticky;
       top: 0;
       background: var(--nav-bg);
-      padding: 1rem 2rem;
+      padding: 1rem;
       border-radius: 0 0 20px 20px;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 900px;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
       margin: auto;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       z-index: 1000;
       border: 1px solid #e0e0e0;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--nav-bg);
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      transition: 0.3s;
     }
 
     nav a {
@@ -37,131 +85,173 @@
       color: #1A1A1A;
       font-weight: bold;
       font-size: 1rem;
+      padding: 0.5rem;
       transition: color 0.3s ease;
+      display: block;
+      text-align: center;
     }
 
     nav a::after {
       content: '';
       position: absolute;
-      left: 0;
-      bottom: -4px;
+      left: 50%;
+      bottom: 0;
       height: 2px;
       width: 0;
       background-color: var(--primary-color);
       transition: width 0.3s ease;
+      transform: translateX(-50%);
     }
 
     nav a:hover::after {
-      width: 100%;
+      width: 80%;
     }
 
     nav a:last-child {
       background-color: var(--primary-color);
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 8px;
+      margin-top: 0.5rem;
     }
 
     nav a:last-child::after {
       display: none;
     }
 
-
-    h2{
-        text-align: center;
-    }
-
+    /* Header - Mobile First */
     .main-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #fff;
     }
 
     .main-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: var(--gold);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      line-height: 1.2;
     }
 
     .main-header p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin-bottom: 2rem;
+      font-size: 1rem;
+      max-width: 100%;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      padding: 0 1rem;
     }
 
-    .header-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    }
-
+    /* Sections - Mobile Optimized */
     .section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
+      padding: 3rem 1rem;
+      max-width: 100%;
       margin: auto;
     }
+
     .section h2 {
-      color: #CBA135;
+      color: var(--primary-color);
       font-size: 2rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
+
     .section p {
       line-height: 1.8;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      text-align: center;
+      padding: 0 1rem;
     }
+
+    /* Grid - Mobile Stack */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
       margin-top: 2rem;
+      align-items: center;
     }
+
     .card {
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      background-color: #f9f9f9;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      background-color: var(--card-bg);
       text-align: center;
       transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 300px;
     }
+
     .card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
     }
+
     .card img {
       height: 60px;
       margin-bottom: 1rem;
+      max-width: 100%;
     }
+
     .card h3 {
-      color: #CBA135;
+      color: var(--primary-color);
       margin-bottom: 0.5rem;
+      font-size: 1.2rem;
     }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
+      padding: 0;
+    }
+
+    /* Values - Mobile Stack */
     .values {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
+      flex-direction: column;
+      gap: 2rem;
       margin-top: 2rem;
+      align-items: center;
     }
+
     .value {
-      flex: 1;
-      min-width: 250px;
       background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 10px;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
     }
+
+    .value h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .value p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
+      padding: 0;
+    }
+
+    /* FAQ - Mobile Optimized */
     .faq {
-      padding: 4rem 2rem;
-      max-width: 800px;
-      margin: auto;
+      padding: 3rem 1rem;
+      max-width: 100%;
     }
 
     .faq h2 {
-      color: #CBA135;
+      color: var(--primary-color);
       text-align: center;
       margin-bottom: 2rem;
+      font-size: 2rem;
     }
 
     .faq-item {
@@ -172,143 +262,182 @@
 
     .faq-item h3 {
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+    }
+
+    .faq-item h3:hover {
+      color: var(--primary-color);
     }
 
     .faq-item p {
       display: none;
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-top: 0.5rem;
+      line-height: 1.6;
+      color: #555;
     }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      background-color: #f5f5f5;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
+      background-color: var(--footer-bg);
+      color: var(--text-color);
+      margin-top: 3rem;
     }
-    @media (max-width: 1024px) {
-  header h1 {
-    font-size: 2.5rem;
-  }
 
-  .package {
-    max-width: 100%;
-  }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
 
-  .step {
-    max-width: 90%;
-  }
-}
+    /* Tablet Styles */
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
 
-@media (max-width: 768px) {
-  nav {
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-  }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        gap: 2rem;
+      }
 
-  nav a {
-    font-size: 0.95rem;
-    padding: 0.5rem;
-  }
+      nav {
+        justify-content: center;
+        padding: 1rem 2rem;
+      }
 
-  header {
-    padding: 4rem 1rem;
-  }
+      nav a:last-child {
+        margin-top: 0;
+      }
 
-  header h1 {
-    font-size: 2rem;
-  }
+      .main-header {
+        padding: 4rem 2rem;
+      }
 
-  .packages, .process {
-    flex-direction: column;
-    align-items: center;
-  }
+      .main-header h1 {
+        font-size: 2.5rem;
+      }
 
-  .package, .step {
-    width: 100%;
-    max-width: 90%;
-  }
+      .main-header p {
+        font-size: 1.2rem;
+        max-width: 600px;
+      }
 
-  .faq h2 {
-    font-size: 1.75rem;
-  }
+      .section {
+        padding: 4rem 2rem;
+        max-width: 1000px;
+      }
 
-  .faq-item h3 {
-    font-size: 1rem;
-  }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        flex-direction: unset;
+      }
 
-  .faq-item p {
-    font-size: 0.95rem;
-  }
+      .card {
+        max-width: none;
+      }
 
-  section#section h2 {
-    font-size: 2rem;
-  }
+      .values {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-  .about-icons,
-  .stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
+      .value {
+        flex: 1;
+        min-width: 250px;
+        max-width: 300px;
+      }
 
-  .about-icons > div, .stats > div {
-    width: 100%;
-    max-width: 90%;
-  }
-}
+      .faq {
+        max-width: 800px;
+        margin: auto;
+        padding: 4rem 2rem;
+      }
+    }
 
-@media (max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0.5rem;
-  }
+    /* Desktop Styles */
+    @media (min-width: 1024px) {
+      nav {
+        max-width: 900px;
+      }
 
-  nav a {
-    font-size: 0.9rem;
-  }
+      .main-header {
+        padding: 6rem 2rem;
+      }
 
-  header h1 {
-    font-size: 1.75rem;
-  }
+      .main-header h1 {
+        font-size: 3rem;
+      }
 
-  .step img {
-    width: 70px;
-  }
+      .section h2 {
+        font-size: 2.5rem;
+      }
 
-  .package button {
-    width: 100%;
-  }
+      .card img {
+        height: 80px;
+      }
+    }
 
-  blockquote {
-    font-size: 0.95rem;
-    padding-left: 1rem;
-  }
-}
+    /* Large Desktop */
+    @media (min-width: 1200px) {
+      .value {
+        max-width: 320px;
+      }
+    }
 
+    /* Touch improvements for all screen sizes */
+    button, a, .faq-item h3 {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Ensure images don't overflow */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="contact.html">Contact</a>
-    <a href="quotation.html">Get a Quote</a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="contact.html">Contact</a>
+      <a href="quotation.html">Get a Quote</a>
+    </div>
   </nav>
 
-<header class="main-header">
-  <h1>About Fariad Agency</h1>
-  <p>Fariad Agency is a creative digital agency that helps small brands grow through strategic marketing, web design, and social media management. It focuses on crafting scroll-stopping content and impactful digital experiences that drive business growth.
-</p>
-</header>
-
+  <header class="main-header" data-aos="fade-down">
+    <h1>About Fariad Agency</h1>
+    <p>
+      Fariad Agency is a creative digital agency that helps small brands grow through strategic marketing, web design, and social media management. We focus on crafting scroll-stopping content and impactful digital experiences that drive business growth.
+    </p>
+  </header>
 
   <section class="section" data-aos="fade-up">
-    <h2 >Our Mission</h2>
+    <h2>Our Mission</h2>
     <p>
       At Fariad, we empower small businesses and startups with bold, strategy-driven digital experiences.
       Through creativity, technology and close collaboration, we aim to elevate your brand in the digital landscape.
@@ -318,17 +447,17 @@
   <section class="section" data-aos="fade-up">
     <h2>What We Offer</h2>
     <div class="grid">
-      <div class="card">
+      <div class="card" data-aos="zoom-in">
         <img src="https://cdn-icons-png.flaticon.com/512/1008/1008000.png" alt="Design" />
         <h3>Design</h3>
         <p>Crafting user-centered, visually compelling interfaces that captivate and convert.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="zoom-in" data-aos-delay="150">
         <img src="https://cdn-icons-png.flaticon.com/512/2721/2721269.png" alt="Development" />
         <h3>Development</h3>
         <p>From landing pages to full websites, we build fast, secure, and scalable solutions.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">
         <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Marketing" />
         <h3>Marketing</h3>
         <p>SEO, social media, and advertising campaigns that reach the right audience at the right time.</p>
@@ -339,20 +468,21 @@
   <section class="section" data-aos="fade-up">
     <h2>Our Values</h2>
     <div class="values">
-      <div class="value">
+      <div class="value" data-aos="fade-up" data-aos-delay="100">
         <h3>Creativity</h3>
         <p>We believe in the power of original ideas to solve modern problems.</p>
       </div>
-      <div class="value">
+      <div class="value" data-aos="fade-up" data-aos-delay="200">
         <h3>Collaboration</h3>
         <p>We work closely with clients to build trust and foster innovation together.</p>
       </div>
-      <div class="value">
+      <div class="value" data-aos="fade-up" data-aos-delay="300">
         <h3>Quality</h3>
         <p>We strive to deliver excellent results through precision and consistency.</p>
       </div>
     </div>
   </section>
+
   <section class="faq" data-aos="fade-up">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
@@ -360,12 +490,12 @@
       <p>Most websites take between 1–3 weeks to complete, depending on project size, complexity, and content readiness. We maintain a clear timeline with milestones to ensure you're always in the loop.</p>
     </div>
     <div class="faq-item">
-      <h3 onclick="toggleFaq(this)">What’s included in your social media management services?</h3>
+      <h3 onclick="toggleFaq(this)">What's included in your social media management services?</h3>
       <p>Our service includes strategy planning, content creation, post scheduling, performance tracking, and engagement management — all customized to your brand voice and goals.</p>
     </div>
     <div class="faq-item">
       <h3 onclick="toggleFaq(this)">Do I need to provide the content for my website?</h3>
-      <p>We can work with content you provide, or craft it from scratch with our copywriting and creative team. This includes text, images, icons, and brand-consistent tone and voice..</p>
+      <p>We can work with content you provide, or craft it from scratch with our copywriting and creative team. This includes text, images, icons, and brand-consistent tone and voice.</p>
     </div>
     <div class="faq-item">
       <h3 onclick="toggleFaq(this)">Do you provide support after launch?</h3>
@@ -373,7 +503,7 @@
     </div>
     <div class="faq-item">
       <h3 onclick="toggleFaq(this)">Can you help with branding or a new logo?</h3>
-      <p>>Absolutely! We offer full branding packages which include logo design, color palettes, typography, and brand guidelines to help your business look professional and consistent everywhere.</p>
+      <p>Absolutely! We offer full branding packages which include logo design, color palettes, typography, and brand guidelines to help your business look professional and consistent everywhere.</p>
     </div>
   </section>
 
@@ -384,22 +514,24 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+    
     function toggleFaq(el) {
       const p = el.nextElementSibling;
       p.style.display = p.style.display === 'block' ? 'none' : 'block';
     }
-  </script>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    
-    function toggleFaq(element) {
-      const p = element.nextElementSibling;
-      p.style.display = p.style.display === "block" ? "none" : "block";
+    function toggleNav() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
     }
-    
+
+    // Close mobile nav when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
+<!-- This code is a complete HTML document for an "About Us" page for Fariad Agency. It includes responsive navigation, sections about the agency's mission, services, values, and FAQs, along with animations and styles for a modern look. The JavaScript handles toggling the navigation menu and FAQ answers. -->

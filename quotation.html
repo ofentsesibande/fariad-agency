@@ -8,28 +8,75 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #111;
+    :root {
+      --primary-color: #CBA135;
+      --background-color: #ffffff;
+      --text-color: #0A0A0A;
+      --card-bg: #f9f9f9;
+      --nav-bg: #ffffff;
+      --footer-bg: #f1f1f1;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Mobile-First Navigation */
     nav {
       position: sticky;
       top: 0;
       background: var(--nav-bg);
-      padding: 1rem 2rem;
+      padding: 1rem;
       border-radius: 0 0 20px 20px;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 900px;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
       margin: auto;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       z-index: 1000;
       border: 1px solid #e0e0e0;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--nav-bg);
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      transition: 0.3s;
     }
 
     nav a {
@@ -38,119 +85,136 @@
       color: #1A1A1A;
       font-weight: bold;
       font-size: 1rem;
+      padding: 0.5rem;
       transition: color 0.3s ease;
+      display: block;
+      text-align: center;
     }
 
     nav a::after {
       content: '';
       position: absolute;
-      left: 0;
-      bottom: -4px;
+      left: 50%;
+      bottom: 0;
       height: 2px;
       width: 0;
       background-color: var(--primary-color);
       transition: width 0.3s ease;
+      transform: translateX(-50%);
     }
 
     nav a:hover::after {
-      width: 100%;
+      width: 80%;
     }
 
     nav a:last-child {
       background-color: var(--primary-color);
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 8px;
+      margin-top: 0.5rem;
     }
 
     nav a:last-child::after {
       display: none;
     }
 
-
+    /* Quote Header - Mobile First */
     .quote-header {
       text-align: center;
       padding: 3rem 1rem;
+      background-color: #fff;
     }
 
     .quote-header h1 {
-      font-size: 2.5rem;
-      color: #CBA135;
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      line-height: 1.2;
     }
 
     .quote-header p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #444;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
+    /* Form Container - Mobile Optimized */
     .quote-form-container {
-      max-width: 700px;
+      max-width: 100%;
       margin: auto;
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
 
     form {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     label {
       font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
     input, textarea, select {
-      padding: 0.9rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
       font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
       transition: all 0.3s ease;
+      width: 100%;
+      background-color: #fff;
     }
 
     input:focus, textarea:focus, select:focus {
-      border-color: #CBA135;
+      border-color: var(--primary-color);
       outline: none;
-      box-shadow: 0 0 10px rgba(203, 161, 53, 0.4);
+      box-shadow: 0 0 15px rgba(203, 161, 53, 0.2);
+      transform: translateY(-2px);
     }
 
     input:hover, textarea:hover, select:hover {
       background-color: #f9f9f9;
+      border-color: #ccc;
     }
 
     textarea {
       resize: vertical;
-      min-height: 100px;
+      min-height: 120px;
     }
 
     button {
-      padding: 1rem;
-      background-color: #CBA135;
+      padding: 1rem 2rem;
+      background-color: var(--primary-color);
       color: white;
       border: none;
       font-weight: bold;
       font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     button:hover {
-      background-color: #b8902f;
-      transform: scale(1.03);
+      background-color: #b8912e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(203, 161, 53, 0.3);
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 4rem;
-      border-top: 1px solid #eee;
-    }
-
-    footer a {
-      color: #CBA135;
-      text-decoration: none;
+    button:active {
+      transform: translateY(0);
     }
 
     /* Confirmation Animation Styling */
@@ -166,14 +230,15 @@
     }
 
     .thank-you h2 {
-      color: #CBA135;
-      font-size: 2rem;
+      color: var(--primary-color);
+      font-size: 1.8rem;
       margin-bottom: 1rem;
     }
 
     .thank-you p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #444;
+      line-height: 1.6;
     }
 
     @keyframes fadeIn {
@@ -181,154 +246,202 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 1024px) {
-  header h1 {
-    font-size: 2.5rem;
-  }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      background-color: var(--footer-bg);
+      color: var(--text-color);
+      margin-top: 3rem;
+    }
 
-  .package {
-    max-width: 100%;
-  }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
 
-  .step {
-    max-width: 90%;
-  }
-}
+    /* Tablet Styles */
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
 
-@media (max-width: 768px) {
-  nav {
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-  }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        gap: 2rem;
+      }
 
-  nav a {
-    font-size: 0.95rem;
-    padding: 0.5rem;
-  }
+      nav {
+        justify-content: center;
+        padding: 1rem 2rem;
+      }
 
-  header {
-    padding: 4rem 1rem;
-  }
+      nav a:last-child {
+        margin-top: 0;
+      }
 
-  header h1 {
-    font-size: 2rem;
-  }
+      .quote-header {
+        padding: 4rem 2rem;
+      }
 
-  .packages, .process {
-    flex-direction: column;
-    align-items: center;
-  }
+      .quote-header h1 {
+        font-size: 2.5rem;
+      }
 
-  .package, .step {
-    width: 100%;
-    max-width: 90%;
-  }
+      .quote-header p {
+        font-size: 1.1rem;
+      }
 
-  .faq h2 {
-    font-size: 1.75rem;
-  }
+      .quote-form-container {
+        padding: 3rem 2rem;
+      }
 
-  .faq-item h3 {
-    font-size: 1rem;
-  }
+      form {
+        max-width: 700px;
+      }
+    }
 
-  .faq-item p {
-    font-size: 0.95rem;
-  }
+    /* Desktop Styles */
+    @media (min-width: 1024px) {
+      nav {
+        max-width: 900px;
+      }
 
-  section#section h2 {
-    font-size: 2rem;
-  }
+      .quote-header {
+        padding: 5rem 2rem;
+      }
 
-  .about-icons,
-  .stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
+      .quote-header h1 {
+        font-size: 3rem;
+      }
 
-  .about-icons > div, .stats > div {
-    width: 100%;
-    max-width: 90%;
-  }
-}
+      .quote-header p {
+        font-size: 1.2rem;
+      }
 
-@media (max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0.5rem;
-  }
+      .quote-form-container {
+        padding: 4rem 2rem;
+      }
 
-  nav a {
-    font-size: 0.9rem;
-  }
+      .thank-you h2 {
+        font-size: 2.5rem;
+      }
 
-  header h1 {
-    font-size: 1.75rem;
-  }
+      .thank-you p {
+        font-size: 1.1rem;
+      }
+    }
 
-  .step img {
-    width: 70px;
-  }
+    /* Touch improvements for all screen sizes */
+    button, a, input, textarea, select {
+      min-height: 44px;
+    }
 
-  .package button {
-    width: 100%;
-  }
+    /* Ensure form elements don't overflow */
+    input, textarea, select {
+      max-width: 100%;
+    }
 
-  blockquote {
-    font-size: 0.95rem;
-    padding-left: 1rem;
-  }
-}
+    /* Form field groups */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
+    /* Loading state for button */
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Form validation styles */
+    input:invalid:not(:focus):not(:placeholder-shown),
+    textarea:invalid:not(:focus):not(:placeholder-shown),
+    select:invalid:not(:focus) {
+      border-color: #e74c3c;
+      background-color: #fdf2f2;
+    }
+
+    input:valid:not(:focus):not(:placeholder-shown),
+    textarea:valid:not(:focus):not(:placeholder-shown),
+    select:valid:not(:focus) {
+      border-color: #27ae60;
+      background-color: #f2fdf2;
+    }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="contact.html">Contact</a>
-    <a href="quotation.html">Get a Quote</a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="contact.html">Contact</a>
+      <a href="quotation.html">Get a Quote</a>
+    </div>
   </nav>
 
   <section class="quote-header" data-aos="fade-down">
     <h1>Get a Custom Quote</h1>
-    <p>Let’s bring your vision to life — tell us about your project.</p>
+    <p>Let's bring your vision to life — tell us about your project.</p>
   </section>
 
   <section class="quote-form-container" data-aos="fade-up">
     <form name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="showThankYou(event)">
       <input type="hidden" name="form-name" value="quote" />
       <p hidden>
-        <label>Don’t fill this out: <input name="bot-field" /></label>
+        <label>Don't fill this out: <input name="bot-field" /></label>
       </p>
 
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required />
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name" />
+      </div>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required />
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+      </div>
 
-      <label for="company">Company Name</label>
-      <input type="text" id="company" name="company" />
+      <div class="form-group">
+        <label for="company">Company Name</label>
+        <input type="text" id="company" name="company" placeholder="Your company name (optional)" />
+      </div>
 
-      <label for="budget">Estimated Budget</label>
-      <select name="budget" id="budget" required>
-        <option value="less than R1,000">Less than R1,500</option>
-        <option value="R1,000 - R5,000">R1,500 - R3,000</option>
-        <option value="R5,000 - R10,000">R3,000 - R6,000</option>
-        <option value="More than R10,000">More than R6,000</option>
-      </select>
+      <div class="form-group">
+        <label for="budget">Estimated Budget</label>
+        <select name="budget" id="budget" required>
+          <option value="">Select your budget range</option>
+          <option value="less than R1,500">Less than R1,500</option>
+          <option value="R1,500 - R3,000">R1,500 - R3,000</option>
+          <option value="R3,000 - R6,000">R3,000 - R6,000</option>
+          <option value="More than R6,000">More than R6,000</option>
+        </select>
+      </div>
 
-      <label for="goals">Project Goals</label>
-      <textarea id="goals" name="goals" placeholder="Tell us about your goals and needs..." required></textarea>
+      <div class="form-group">
+        <label for="goals">Project Goals</label>
+        <textarea id="goals" name="goals" placeholder="Tell us about your goals and needs..." required></textarea>
+      </div>
 
-      <label for="message">Additional Message</label>
-      <textarea id="message" name="message"></textarea>
+      <div class="form-group">
+        <label for="message">Additional Message</label>
+        <textarea id="message" name="message" placeholder="Any additional information or questions?"></textarea>
+      </div>
 
       <button type="submit">Submit Quote Request</button>
     </form>
@@ -337,7 +450,7 @@
   <!-- Confirmation Animation -->
   <section class="thank-you" id="thankYouMessage">
     <h2>🎉 Thank you!</h2>
-    <p>We've received your request. We'll be in touch very soon.</p>
+    <p>We've received your request. We'll be in touch within 24 hours to discuss your project in detail.</p>
   </section>
 
   <footer>
@@ -348,26 +461,66 @@
   <script>
     AOS.init();
     
-    function toggleFaq(element) {
-      const p = element.nextElementSibling;
-      p.style.display = p.style.display === "block" ? "none" : "block";
+    function toggleNav() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
     }
+
+    // Close mobile nav when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
     
-    //client-side confirmation (for smooth user feedback)
+    // Client-side confirmation (for smooth user feedback)
     function showThankYou(event) {
       event.preventDefault();
-      document.querySelector("form").style.display = "none";
-      document.getElementById("thankYouMessage").classList.add("active");
+      
+      // Disable the submit button to prevent double submission
+      const submitButton = event.target.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+      
+      // Hide form and show thank you message
+      setTimeout(() => {
+        document.querySelector("form").style.display = "none";
+        document.getElementById("thankYouMessage").classList.add("active");
+      }, 500);
 
-      // Optional: submit to Netlify manually if JS is enabled
+      // Submit to Netlify
       const form = event.target;
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(new FormData(form)).toString()
-      }).catch(() => {});
+      }).catch((error) => {
+        console.error('Form submission error:', error);
+        // Re-enable button if there's an error
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Quote Request';
+      });
     }
+
+    // Form validation enhancement
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const inputs = form.querySelectorAll('input, textarea, select');
+      
+      inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          if (this.hasAttribute('required') && !this.value.trim()) {
+            this.style.borderColor = '#e74c3c';
+          } else if (this.value.trim()) {
+            this.style.borderColor = '#27ae60';
+          }
+        });
+        
+        input.addEventListener('focus', function() {
+          this.style.borderColor = 'var(--primary-color)';
+        });
+      });
+    });
   </script>
 </body>
 </html>
-<!-- This code creates a simple quote request form for a web agency, styled with CSS and animated with AOS. It includes a navigation bar, a header section, a form for user input, and a thank you message that appears after submission. The form is designed to collect user details and project requirements, and it uses Netlify for form handling. -->
